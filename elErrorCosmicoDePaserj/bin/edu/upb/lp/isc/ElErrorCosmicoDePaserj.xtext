@@ -1,0 +1,105 @@
+grammar edu.upb.lp.isc.ElErrorCosmicoDePaserj with org.eclipse.xtext.common.Terminals
+
+generate elErrorCosmicoDePaserj "http://www.upb.edu/lp/isc/ElErrorCosmicoDePaserj"
+
+MyRacketProgram:
+	("Definitions:"
+		defines+=Define+)?	
+	"Executions:"
+		executions+=Expression+
+;
+Define:
+	"(" "define" "(" name=ID params+=ParamsExpression* ")" body=Expression ")"
+;
+
+Expression:
+	ParamsCallExpression
+	| SimpleExpression
+	| ArithExpression
+	| IfExpression 
+	| FunctionCallExpression 
+	| StringExpression 
+	| BooleanExpression
+	| ListExpression
+	| ListOperationExpression	
+;
+
+
+SimpleExpression:
+	IntExpression 
+;
+IntExpression:
+	value=INT
+;
+ArithExpression:
+	"(" op=("+"|"-"|"*"|"/") args+=Expression args+=Expression+ ")"
+;
+IfExpression:
+	"(" "if"  cond=BooleanExpression  then=Expression sino=Expression ")" 
+;
+
+//LINKING
+FunctionCallExpression:
+	"(" function=[Define] args+=Expression* ")"
+;
+StringExpression:
+	st=STRING
+;
+ParamsExpression:
+	name=ID
+;
+ParamsCallExpression:
+	function=[ParamsExpression]
+;
+	
+BooleanExpression:
+    BooleanConstant  | BooleanOpExpression | ComparisonExpression | StringEqualsExpression 
+    |  ListIsEmptyExpression 
+    //|condicion = (LeftPart= Expression relacion=opBool RightPart= Expression)
+    // condicion ej x>2
+    //etc (un id)
+    //cte boolean true o false
+;
+
+BooleanConstant:
+    bool?= 'true' | {BooleanConstant} 'false'
+;
+
+BooleanOpExpression:
+    "(" op=("AND"|"OR") args+=BooleanExpression args+=BooleanExpression+ ")"
+;
+ComparisonExpression:
+    "(" evaluator= (">"|"<"|"equal"|">="|"<=") args+=IntExpression args+=IntExpression+ ")"
+;
+StringEqualsExpression:
+    "(" op="equal?" args+=StringExpression args+=StringExpression ")"
+;
+ListIsEmptyExpression:
+ "(" "empty?" list=LinkedList ")"
+;
+
+ListExpression:
+   simple=SimpleList
+;
+
+SimpleList:
+       {SimpleList} "$(" linked=LinkedList? ")"
+;
+LinkedList:
+	head=Expression tail+=Expression*
+;
+ListOperationExpression:
+	ListHeadOp | ListTailOp | ListConsOp | ListLengthOp 
+;
+ListHeadOp:
+	"(" "car" list=LinkedList ")" 
+;
+ListTailOp:
+	"(" "cdr" list=LinkedList ")"
+;
+ListConsOp:
+	"(" "cons" elem=Expression list=LinkedList ")"
+;
+ListLengthOp:
+	"(" "length" list=LinkedList ")"
+;

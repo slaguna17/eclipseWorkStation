@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;grafosII.kruskal&apos; to &apos;Kruskal&apos;&#x0D;&#x0A;- Original project: &apos;Algoritmica II&apos;&#x0D;&#x0A;- Original element: &apos;grafosII.kruskal&apos;&#x0D;&#x0A;- Renamed element: &apos;grafosII.Kruskal&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;kruskal&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;grafosII{kruskal.java[kruskal" matchStrategy="1" name="Kruskal" qualified="false" references="true" similarDeclarations="false" stamp="1569431866828" textual="false" version="1.0"/>
+</session>

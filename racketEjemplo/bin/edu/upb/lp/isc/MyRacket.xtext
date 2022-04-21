@@ -1,0 +1,38 @@
+grammar edu.upb.lp.isc.MyRacket with org.eclipse.xtext.common.Terminals
+
+generate myRacket "http://www.upb.edu/lp/isc/MyRacket"
+
+MyRacketProgram:
+	("Definitions:"
+		defines+=Define+)?
+	"Executions"
+		executions+=Expression+	
+;
+
+Define: 
+	"(" "define" "(" name = ID params+=ID* ")" body=Expression ")"	
+;
+Expression:
+	SimpleExpression | ArithExpression | IfExpression
+;
+
+SimpleExpression:
+	IntExpression
+;
+
+IntExpression:
+	value = INT
+;
+
+ArithExpression:
+	"(" op=("+"|"-"|"*"|"/") (args += Expression) (args += Expression)+ ")"
+;
+
+IfExpression:
+	"(" "if" "(" cond= Expression ")" then=Expression else=Expression ")"
+;
+
+FunctionCallExpression:
+	"("function=[Define] args+=Expression* ")"
+;
+

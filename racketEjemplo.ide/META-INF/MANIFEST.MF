@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: racketEjemplo.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: racketEjemplo.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: racketEjemplo.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: racketEjemplo,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: edu.upb.lp.isc.ide.contentassist.antlr.internal,
+ edu.upb.lp.isc.ide.contentassist.antlr

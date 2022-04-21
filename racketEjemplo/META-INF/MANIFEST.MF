@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: racketEjemplo
+Bundle-ManifestVersion: 2
+Bundle-Name: racketEjemplo
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: racketEjemplo; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: edu.upb.lp.isc.services,
+ edu.upb.lp.isc.generator,
+ edu.upb.lp.isc.myRacket.util,
+ edu.upb.lp.isc.serializer,
+ edu.upb.lp.isc.myRacket.impl,
+ edu.upb.lp.isc,
+ edu.upb.lp.isc.validation,
+ edu.upb.lp.isc.parser.antlr.internal,
+ edu.upb.lp.isc.myRacket,
+ edu.upb.lp.isc.parser.antlr,
+ edu.upb.lp.isc.scoping
+Import-Package: org.apache.log4j
